@@ -10,6 +10,18 @@ Window {
     Row{
         Numberpad {
             id: numberpad
+
+            onButtonPressed: {
+                console.log(id)
+            }
+
+            onEnterPressed: {
+                console.log("enter")
+            }
+
+            onClearPressed: {
+                console.log("clear")
+            }
         }
 
         LockDashboard{

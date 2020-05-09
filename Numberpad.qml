@@ -69,10 +69,12 @@ Item {
         NumberpadButton {
             id: btnEnter
             number: qsTr("E")
+            onClickSignal: enterPressed()
         }
         NumberpadButton {
             id: btnClear
             number: qsTr("C")
+            onClickSignal: clearPressed()
         }
 
     }
