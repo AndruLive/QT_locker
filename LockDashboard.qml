@@ -17,6 +17,12 @@ Item {
         function unlock() {
             unlocked = true;
         }
+
+        onUnlockedChanged: {
+            programming = false;
+        }
+
+        property variant newPasscode: [1,2,3,4]
     }
 
     function startUnlocking (){
@@ -34,20 +40,40 @@ Item {
             return;
         }
 
-        if ( number !== priv.passcode[priv.inputIndex]){
-            lock();
-            return;
+        if(priv.programming){
+            priv.newPasscode[priv.inputIndex] = number;
+
+        }
+        else {
+            if (number !== priv.passcode[priv.inputIndex]){
+                lock();
+                return;
+            }
         }
 
         if (priv.inputIndex == 3){
-            priv.unlock();
+            if (priv.programming){
+                for (var i=0; i<4; i++){
+                    priv.passcode[i] = priv.newPasscode[i];
+                }
+                lock();
+                }
+            else {
+                priv.unlock()
+            }
         }
         else {
             priv.inputIndex++
         }
-
     }
 
+    function startProgramming(){
+
+        if (priv.unlocked == true){
+            priv.programming = true
+            priv.inputIndex = 0
+        }
+    }
 
     Rectangle{
         anchors.fill: parent
@@ -81,9 +107,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 active: priv.programming
             }
-
-
         }
     }
-
 }

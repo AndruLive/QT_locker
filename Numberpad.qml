@@ -76,7 +76,5 @@ Item {
             number: qsTr("C")
             onClickSignal: clearPressed()
         }
-
     }
-
 }

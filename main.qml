@@ -18,6 +18,7 @@ Window {
 
             onEnterPressed: {
                 console.log("enter")
+                dashboard.startProgramming();
             }
 
             onClearPressed: {
