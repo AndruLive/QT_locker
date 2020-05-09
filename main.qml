@@ -13,6 +13,7 @@ Window {
 
             onButtonPressed: {
                 console.log(id)
+                dashboard.numberInput(id);
             }
 
             onEnterPressed: {
@@ -21,6 +22,7 @@ Window {
 
             onClearPressed: {
                 console.log("clear")
+                dashboard.startUnlocking();
             }
         }
 
